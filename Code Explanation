@@ -9,12 +9,13 @@ I : for fast Input
 
 (B) Attributes of the DLP class :
 
-num_task, num_servers (Self explanatory)
-List<> adj[] : Adjacent List of the DAG
-List<> par[] : Adjacent List of the DAG if all the edges are reversed. In other words, if there is an egde (u,v,w) in adj[], then an edge (v,u,w) will be present in par[]
-cost[][] : executions costs for any task on any server.
-task_sz[] : denotes the memory required for each task. This is required only when server's capacity limitation is taken into account.
-arr[] : array of type task nodes.
+1. num_task, num_servers (Self explanatory)
+2. List<> adj[] : Adjacent List of the DAG
+3  List<> par[] : Adjacent List of the DAG if all the edges are reversed. In other words, if there is an egde (u,v,w) in adj[], then an edge (v,u,w) will be present in par[]
+4. cost[][] : executions costs for any task on any server.
+5. task_sz[] : denotes the memory required for each task. This is required only when server's capacity limitation is taken into account.
+6. arr[] : array of type task nodes.
+
 (C) FUNCTIONS OF THE CLASS :
 
 run() : this is where we call dfs to calculate DLP values for each node, sort the nodes according to their DLP values and then process them to get the final sequence of execution.
