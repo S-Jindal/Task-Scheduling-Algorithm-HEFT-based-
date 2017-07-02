@@ -7,25 +7,3 @@ Task Scheduling problem is an NP-Hard problem. Polynomial Time solutions to solv
 
 This is an implementation in JAVA.
 
-
-EXPLANATION OF CODE : 
-(A) Supporting classes : -  
-1.  edge : attributes of an edge are the other end of edge, weight of edge
-
-2. task_node : contains attributes to define a task node completely. 
-It implements compareTo function which is required for sorting as a comparator.
-
-3. I : for fast Input
-
-(B) Attributes of the DLP class :  
-1. num_task, num_servers (Self explanatory)
-2. List<> adj[] : Adjacent List of the DAG
-3. List<> par[] : Adjacent List of the DAG if all the edges are reversed. In other words, if there is an egde (u,v,w) in adj[], then an edge (v,u,w) will be present in par[]
-4. cost[][] : executions costs for any task on any server. 
-5. task_sz[] : denotes the memory required for each task. This is required only when server's capacity limitation is taken into account.
-6. arr[] : array of type task nodes.
-
-(C) FUNCTIONS OF THE CLASS : 
-1. run() : this is where we call dfs to calculate DLP values for each node,  sort the nodes according to their DLP values and then process them to get the final sequence of execution.
-2. dfs() : recursive function to call DLP values.
-3. main() : Here I/O is handled and DLP class object is initialised and then run function is called.
