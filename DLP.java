@@ -1,8 +1,8 @@
-package TaskScheduling;
 
 import java.util.*;
-import java.io.*;
-public class DLP {
+import java.io.*;	
+// The class is named DLP (Dynamically Longest Path)
+ class DLP {
 
 	public static void main(String[] args) {
 		/* INPUT - OUTPUT SECTION IS IN MAIN METHOD
@@ -14,14 +14,15 @@ public class DLP {
 		
 		Random r = new Random();
 		int nT = 10, nS = 3, i;
-		I re = new I();
+		I re = new I();				// CLASS OBJECT TO GET INPUTS
 		//nT = re.in_i(); int nE = re.in_i();
 		List<edge> adj[] = new ArrayList[nT+1];
 		List<edge> par[]= new ArrayList[nT+1];
-		for(i = 1; i <= nT; i++){
+		for(i = 1; i <= nT; i++){				// Initialise the adjacent list of graph
 			adj[i] = new ArrayList<edge>();
 			par[i] = new ArrayList<edge>();
-		}
+		}	
+		// THIS IS JUST THE SAMPLE INPUT HARDCODED, IF REQUIRED TAKE THE INPUT ACCORDINGLY 
 		adj[1].add(new edge(2, 18));
 		adj[1].add(new edge(3, 12));
 		adj[1].add(new edge(4, 9));
@@ -45,6 +46,7 @@ public class DLP {
 				par[e.to].add(new edge(i, e.weight));
 			}
 		}
+		// COST OF EXECUTION OF TASK I ON SERVER J, I - ROW | J - COLUMN
 		int cost[][]={ {0,0,0},
 					   {0,14,16,9},
 					   {0,13,19,18},
@@ -58,12 +60,7 @@ public class DLP {
 					    {0, 21, 7, 16}
 		
 		};
-		/*int cost[][]={ {0,0,0},
-				   {0,14,9},
-				   {0,17,11},
-				   {0,13,8},
-				   {0,7,15}
-		};*/
+		
 		/*nS = re.in_i();
 		int cost[][] = new int[nT+1][nS+1];
 		/*System.out.println("  The costs of execution of Task_i on Server_j is as follows : ");
@@ -80,6 +77,7 @@ public class DLP {
 		DLP o = new DLP(adj, par, nT, nS, cost, null);
 		o.run();
 	}
+	 
 	int num_tasks, num_servers;
 	List<edge> adj[];		// Graph structure
 	List<edge> adj_par[];
@@ -98,16 +96,16 @@ public class DLP {
 	
 	task_node arr[];
 	int max_par[];
+	 
 	void run(){
 		
-		arr=new task_node[num_tasks];	
-		//max_par = new int[num_tasks+1];		
+		arr=new task_node[num_tasks];				
 		int i,j;
 		for(i=0; i<num_tasks; i++)
 			arr[i] = new task_node(i+1);
 		for(i=0; i<num_tasks; i++)
 			if(arr[i].dlp==0)
-				dfs(arr[i].id);
+				dfs(arr[i].id);			// CALL DFS FOR NON VISITED NODE 
 		
 		Arrays.sort(arr);
 		
@@ -175,6 +173,7 @@ public class DLP {
 	}
 
 }
+//  SUPPORTING CLASS TO REPRESENT EDGES
 class edge{
 	int to, weight;
 	public edge(int x, int y){
@@ -183,6 +182,7 @@ class edge{
 	}
 }
 
+// ABSTRACTION OF TASK NODE. ADDITIONAL ATTRIBUTES CAN BE ADDED AS PER REQUIREMENT
 class task_node implements Comparable<task_node>{
 	int id;
 	float dlp;
@@ -202,7 +202,7 @@ class task_node implements Comparable<task_node>{
 	}
 }
 
-
+// UTILITY CLASS TO TO TAKE INPUTS
 class I{
 	private InputStream stream;
 	private byte[] buf = new byte[1024];
@@ -344,3 +344,4 @@ class I{
 		public boolean isSpaceChar(int ch);
 	}
 }
+
